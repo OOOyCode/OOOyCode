@@ -1,107 +1,226 @@
-<svg fill="none" width="100%"  xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" width="100%" height="600" xmlns="http://www.w3.org/2000/svg">
  <foreignObject width="100%" height="100%">
-  <div xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml" class="app">
+
       <style>
-        /* From Uiverse.io by elijahgummer */ 
-.switch {
-  position: relative;
-  width: 210px;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 3px;
-  background: #0d0d0d;
-  border-radius: 6px;
-  box-shadow:
-    inset 0 1px 1px 1px rgba(0, 0, 0, 0.5),
-    0 1px 0 0 rgba(255, 255, 255, 0.1);
+:root {
+  --bg: #000;
+  --text: #fff;
+  --muted: #9ca3af;
+  --gradient: linear-gradient(90deg, cyan, purple);
 }
-.switch input[type="checkbox"] {
-  position: absolute;
-  z-index: 1;
+
+/* IMPORTANT: replace body with container root */
+.app {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   width: 100%;
   height: 100%;
-  opacity: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  background: black;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 36px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: black;
+  border: 1px solid transparent;
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  background: var(--gradient);
+  z-index: -1;
+}
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  color: white;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  margin-top: 20px;
+  color: var(--muted);
+}
+
+/* Search */
+.search {
+  margin-top: 30px;
+  display: flex;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: var(--gradient);
+  padding: 2px;
+}
+
+.search input {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background: black;
+  color: white;
+}
+
+.search button {
+  padding: 15px 20px;
+  border: none;
+  background: white;
+  color: black;
   cursor: pointer;
 }
-.switch input[type="checkbox"] + label {
-  position: relative;
-  display: block;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: #1b1c1c;
-  border-radius: 3px;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.5s ease-in-out;
-}
-.switch input[type="checkbox"] + label:before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin-left: 10px;
-  background: #fff;
-  border-radius: 50%;
-  vertical-align: middle;
-  box-shadow:
-    0 0 5px 2px rgba(165, 15, 15, 0.9),
-    0 0 3px 1px rgba(165, 15, 15, 0.9);
-  transition: all 0.5s ease-in-out;
-}
-.switch input[type="checkbox"] + label:after {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 100%;
-  vertical-align: middle;
-}
-.switch input[type="checkbox"] + label i {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 3px;
-  height: 24px;
-  margin-top: -12px;
-  margin-left: -1.5px;
-  border-radius: 2px;
-  background: #0d0d0d;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
-}
-.switch input[type="checkbox"] + label i:before,
-.switch input[type="checkbox"] + label i:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  background: #0d0d0d;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
-}
-.switch input[type="checkbox"] + label i:before {
-  left: -7px;
-}
-.switch input[type="checkbox"] + label i:after {
-  left: 7px;
-}
-.switch input[type="checkbox"]:checked + label {
-  left: 50%;
-}
-.switch input[type="checkbox"]:checked + label:before {
-  box-shadow:
-    0 0 5px 2px rgba(15, 165, 70, 0.9),
-    0 0 3px 1px rgba(15, 165, 70, 0.9);
+
+/* Rating */
+.rating {
+  margin-top: 20px;
+  color: white;
 }
 
+.rating span {
+  color: var(--muted);
+}
+
+/* Image */
+.hero-img img {
+  max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
       </style>
-      <div class="switch">
-       <input id="toggle" type="checkbox" />
-       <label class="toggle" for="toggle">
-         <i></i>
-       </label>
-     </div>
 
-  </div>
+      <header class="header">
+        <div class="container nav">
+          <img class="logo" src="https://landingfoliocom.imgix.net/store/collection/dusk/images/logo.svg" />
+
+          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+          <nav class="nav-links" id="menu">
+            <a href="#">Products</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Support</a>
+          </nav>
+
+          <a href="#" class="btn">Start free trial</a>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="container grid">
+          
+          <div>
+            <h1>Connecting Devs with Employers</h1>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+            </p>
+
+            <form class="search">
+              <input type="text" placeholder="Try Java Developer, React Dev etc." />
+              <button>Find A Developer</button>
+            </form>
+
+            <div class="rating">
+              ★★★★★ <span>4.1/5 (14k Reviews)</span>
+            </div>
+          </div>
+
+          <div class="hero-img">
+            <img src="https://landingfoliocom.imgix.net/store/collection/dusk/images/hero/2/illustration.png" />
+          </div>
+
+        </div>
+      </section>
+
+    </div>
  </foreignObject>
 </svg>
